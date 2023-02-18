@@ -1,0 +1,21 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+
+    <h1 id="app-name">Poppy Corn</h1>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <%= link_to(new_list_path) do %>
+              <div class="nav-link">New List</div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(lists_path) do %>
+              <div class="nav-link">All Lists</div>
+            <% end %>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
