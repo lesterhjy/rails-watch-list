@@ -1,17 +1,22 @@
-<h1><%= @list.name %></h1>
+<div class="cards">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card-trip">
+      <img src="<%= Movie.find(bookmark.movie_id).poster_url %>"/>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= Movie.find(bookmark.movie_id).title %></h2>
+          <p><%= bookmark.comment %></p>
+        </div>
+        <%= link_to bookmark_path(bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <h2 class="card-trip-pricing">Delete</h2>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<% @bookmarks.each do |bookmark| %>
-  <p><%= Movie.find(bookmark.movie_id).title %></p>
-  <p><%= bookmark.comment %></p>
-  <%= link_to "Delete movie",
-      bookmark_path(bookmark.id),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-<% end %>
 <br>
-
-<h1>Add Movie to List</h1>
-
+<h3>Add Movie to List</h1>
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.association :movie, as: :select %>
   <%= f.input :comment %>
