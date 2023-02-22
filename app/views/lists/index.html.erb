@@ -1,6 +1,6 @@
 <div class="cards">
   <% @lists.each do |list| %>
-    <div class="card-category" data-controller="category">
+    <div class="card-category" style="background-image: url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
         <p><%= link_to list.name, list_path(list.id) %></p>
     </div>
   <% end %>
